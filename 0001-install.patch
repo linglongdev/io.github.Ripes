@@ -1,0 +1,29 @@
+From 6065d7d36c48a52a3e5a6d54a25d8c443a845a2d Mon Sep 17 00:00:00 2001
+From: wjyrich <1071633242@qq.com>
+Date: Sat, 14 Sep 2024 17:49:57 +0800
+Subject: [PATCH] install
+
+---
+ CMakeLists.txt | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 330022d..b668489 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -79,3 +79,11 @@ add_executable(${APP_NAME} ${SYSTEM_FLAGS} ${ICONS_SRC} ${EXAMPLES_SRC} ${LAYOUT
+ target_link_libraries(${APP_NAME} Qt5::Core Qt5::Widgets)
+ # Link Ripes library
+ target_link_libraries(${APP_NAME} ripes_lib)
++install(TARGETS ${PROJECT_NAME}
++             DESTINATION bin)
++
++install(FILES appdir/usr/share/icons/hicolor/128x128/apps/Ripes.png
++        DESTINATION share/icons)
++
++install(FILES appdir/usr/share/applications/Ripes.desktop
++            DESTINATION share/applications)
+\ No newline at end of file
+-- 
+2.43.4
+
