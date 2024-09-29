@@ -1,0 +1,30 @@
+version: "1"
+
+package:
+  id: io.github.Ripes
+  name: Ripes
+  version: 2.2.1.1
+  kind: app
+  description: |
+    A graphical processor simulator and assembly editor for the RISC-V ISA
+ 
+command:
+  - /opt/apps/io.github.Ripes/files/bin/Ripes
+
+base: org.deepin.foundation/23.0.0
+runtime: org.deepin.Runtime/23.0.1
+
+sources:
+  - kind: git
+    url: https://github.com/mortbopet/Ripes.git
+    version: master
+    commit: 0ba8847a747b4877f7c87f2ed67d5a4a1c859411
+
+build: |
+  cd /project/linglong/sources/Ripes.git
+  git apply ../../../0001-install.patch
+  mkdir -p build
+  cd build
+  cmake .. \
+        -DCMAKE_INSTALL_PREFIX=${PREFIX}
+  cmake --build . --target install 
